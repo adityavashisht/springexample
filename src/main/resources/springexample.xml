@@ -10,6 +10,11 @@
 
     <bean id="B" class="com.indasil.springexample.B"/>
 
+    <bean id="f" class="com.indasil.springexample.F">
+        <constructor-arg index="0" ref="A"/>
+        <constructor-arg index="1" ref="B"/>
+    </bean>
+
 
 
 </beans>

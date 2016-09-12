@@ -1,5 +1,7 @@
 package com.indasil.springexample;
 
+import com.indasil.SpringAnnotate;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -18,5 +20,17 @@ public class SpringMainTest {
         b.execute();
 
         a.checkBAlive();
+
+
+        AnnotationConfigApplicationContext annotationConfigApplicationContext
+                = new AnnotationConfigApplicationContext(SpringAnnotate.class);
+
+        a = (A) annotationConfigApplicationContext.getBean("a");
+
+        System.out.println("Testing via annotation config");
+        a.checkBAlive();
+
+        a = (A) annotationConfigApplicationContext.getBean("a");
+        System.out.println("Testing Over");
     }
 }
