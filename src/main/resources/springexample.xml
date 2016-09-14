@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="A" class="com.indasil.springexample.A" scope="singleton">
-        <property name="b" ref="B"/>
+        <property firstName="b" ref="B"/>
     </bean>
 
     <bean id="B" class="com.indasil.springexample.B"/>
