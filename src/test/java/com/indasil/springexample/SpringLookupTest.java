@@ -1,6 +1,7 @@
 package com.indasil.springexample;
 
 
+import com.indasil.lookup.AutowireSlave;
 import com.indasil.lookup.Slave;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +19,16 @@ public class SpringLookupTest {
     @Autowired
     private Slave slave;
 
+    @Autowired
+    private AutowireSlave autowireSlave;
+
     @Test
     public void testSlave() {
         slave.slaveTask();
+    }
+
+    @Test
+    public void testAutowireSlave() {
+        autowireSlave.master();
     }
 }
