@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.PersonMapper">
+
+
+    <select id="getById"
+            resultType="com.mybatis.Person"
+            parameterType="map">
+
+        select id, first_name as first
+        from person where id= #{id}
+
+    </select>
+
+    <select id="all" resultType="com.mybatis.Person" parameterType="map">
+        select id, first_name as first
+        from person
+    </select>
+
+    <insert id="newPerson" keyColumn="id" keyProperty="person.id">
+
+        <selectKey keyProperty="person.id" resultType="long"
+                   order="BEFORE">
+            select nextval ('person_seq')
+        </selectKey>
+
+        INSERT INTO person (id, first_name) values (#{person.id},#{person.first})
+
+    </insert>
+
+
+
+</mapper>
