@@ -1,5 +1,7 @@
 package com.hibernate;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonHibernateService {
 
+    private static final Logger logger = LogManager.getLogger(PersonHibernateService.class);
+
     @Autowired
     private SessionFactory sessionFactory;
 
     public void createPerson(Person p) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(p);
+        session.save(p);
+        logger.info("Done saving person...");
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("I am on DEGUG Mode");
+        }
+
+        if(logger.isInfoEnabled()) {
+            logger.info("Check INFO..");
+        }
     }
 }
