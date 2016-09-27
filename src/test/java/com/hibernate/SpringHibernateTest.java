@@ -19,6 +19,7 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/hibernate.xml"})
+@Transactional
 public class SpringHibernateTest {
 
     @Autowired
@@ -26,7 +27,6 @@ public class SpringHibernateTest {
 
 
     @Test
-
     public void createPersonTest() {
         Person p = new Person();// This is a transient object
         p.setFirst("ADitya");
