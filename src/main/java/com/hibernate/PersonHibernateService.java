@@ -2,6 +2,7 @@ package com.hibernate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,19 @@ public class PersonHibernateService {
         if(logger.isInfoEnabled()) {
             logger.info("Check INFO..");
         }
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Person getById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Person p = session.load(Person.class, id);
+        Hibernate.initialize(p);
+
+        return p;
+
     }
 }

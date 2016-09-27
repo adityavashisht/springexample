@@ -15,7 +15,7 @@
 
 
 
-        <list name="addressList" cascade="all-delete-orphan" inverse="true">
+        <list name="addressList" cascade="all-delete-orphan" inverse="true" lazy="false">
             <key column="PERSON_ID"/>
             <index column="ADDRESS_INDEX" type="integer"/>
             <one-to-many class="com.hibernate.Address"/>

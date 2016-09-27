@@ -9,6 +9,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import java.util.List;
 
 
 /**
@@ -16,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/hibernate.xml"})
-@Transactional
 public class SpringHibernateTest {
 
     @Autowired
@@ -24,9 +26,9 @@ public class SpringHibernateTest {
 
 
     @Test
-    @Rollback(false)
+
     public void createPersonTest() {
-        Person p = new Person();
+        Person p = new Person();// This is a transient object
         p.setFirst("ADitya");
 
 
@@ -58,14 +60,20 @@ public class SpringHibernateTest {
         p.addAddress(addressTwo);
 
 
-
-
-
         personHibernateService.createPerson(p);
     }
 
 
+    @Test
+    public void testGet() {
 
+        Person p = personHibernateService.getById(1L);
+        System.out.println(p.getFirst());
+        List<Address> addressList = p.getAddressList();
+        for (Address address : addressList) {
+            System.out.println(address.getCity());
+        }
+    }
 
 
 }
