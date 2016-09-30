@@ -1,5 +1,6 @@
 package com.hibernate;
 
+import com.hibernate.mapping.Vehicle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Hibernate;
@@ -47,5 +48,24 @@ public class PersonHibernateService {
 
         return p;
 
+    }
+
+
+    /**
+     *
+     * @param vehicle
+     */
+    public void create(Vehicle vehicle) {
+        sessionFactory.getCurrentSession().saveOrUpdate(vehicle);
+    }
+
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Vehicle getVehicleById(Long id) {
+        return sessionFactory.getCurrentSession().load(Vehicle.class, id);
     }
 }
