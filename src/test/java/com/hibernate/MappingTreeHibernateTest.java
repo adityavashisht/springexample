@@ -54,5 +54,29 @@ public class MappingTreeHibernateTest {
         Assert.notNull(vehicle);
     }
 
+    @Test
+    public void testHQL() {
+        List<Vehicle> vehicles = personHibernateService.getAllByVin("1");
+        Assert.notNull(vehicles);
+    }
+
+    @Test
+    public void testGetHonda() {
+        List<Vehicle> vehicles = personHibernateService.getHondaByModelAndYear("CRV", "2016");
+        Assert.notNull(vehicles);
+    }
+
+    @Test
+    public void testGetToyota() {
+        List<Vehicle> vehicles = personHibernateService.getToyotaByModelAndYear("CAMRY", "2017");
+        Assert.notNull(vehicles);
+    }
+
+    @Test
+    public void testGetToyotaSQL() {
+        List<Vehicle> vehicles = personHibernateService.getAllToyotaSQL("CAMRY", "2017");
+        Assert.notNull(vehicles);
+    }
+
 
 }

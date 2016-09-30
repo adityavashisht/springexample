@@ -13,21 +13,41 @@
 
         <property name="vin" column="VIN" type="string"/>
 
+        <joined-subclass name="Honda" table="HONDA">
+            <key column="VEHICLE_ID"></key>
+            <property name="model" column="MODEL"/>
+            <property name="year" column="YEAR"/>
+        </joined-subclass>
+
+
+        <joined-subclass  name="Toyota" table="TOYOTA">
+            <key column="VEHICLE_ID"></key>
+            <property name="model" column="MODEL"/>
+            <property name="year" column="YEAR"/>
+        </joined-subclass>
 
     </class>
 
 
-    <joined-subclass extends="Vehicle" name="Honda" table="HONDA">
-        <key column="VEHICLE_ID"></key>
-        <property name="model" column="MODEL"/>
-        <property name="year" column="YEAR"/>
-    </joined-subclass>
+
+    <query name="query.getToyotaByModelAndYear">
+        from Toyota t
+        where
+        t.model=:model
+        and
+        t.year=:year
+
+    </query>
+
+    <sql-query name="query.sql.toyota">
+        select t.*, v.vin as vin
+        from
+        toyota t
+        left join vehicle v on t.vehicle_id = v.vehicle_id
+
+        where model =:model and year=:year
+    </sql-query>
 
 
-    <joined-subclass extends="Vehicle" name="Toyota" table="TOYOTA">
-        <key column="VEHICLE_ID"></key>
-        <property name="model" column="MODEL"/>
-        <property name="year" column="YEAR"/>
-    </joined-subclass>
 
 </hibernate-mapping>
