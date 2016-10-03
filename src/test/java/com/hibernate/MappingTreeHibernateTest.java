@@ -75,6 +75,10 @@ public class MappingTreeHibernateTest {
     @Test
     public void testGetToyotaSQL() {
         List<Vehicle> vehicles = personHibernateService.getAllToyotaSQL("CAMRY", "2017");
+
+
+        List<Vehicle> vehiclesTwo = personHibernateService.getAllToyotaSQL("CAMRY", "2017");
+
         Assert.notNull(vehicles);
     }
 

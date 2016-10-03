@@ -12,6 +12,7 @@ import org.hibernate.internal.SessionImpl;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -111,7 +112,7 @@ public class PersonHibernateService {
 
     }
 
-
+    @Cacheable(value = "toyotaCache")
     public List<Vehicle> getAllToyotaSQL(String model, String year) {
         Session session = sessionFactory.getCurrentSession();
         NativeQuery nativeQuery = session.getNamedNativeQuery("query.sql.toyota")
