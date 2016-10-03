@@ -112,7 +112,7 @@ public class PersonHibernateService {
 
     }
 
-    @Cacheable(value = "toyotaCache")
+
     public List<Vehicle> getAllToyotaSQL(String model, String year) {
         Session session = sessionFactory.getCurrentSession();
         NativeQuery nativeQuery = session.getNamedNativeQuery("query.sql.toyota")
