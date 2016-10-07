@@ -1,17 +1,23 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: vashishta
-  Date: 10/5/16
-  Time: 6:41 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-I am the hello view
+
+<form:form modelAttribute="helloForm" method="post">
+
+    <form:input path="prefix"/>
+    <br/>
+    <form:input path="person.first"/>
+
+    <input type="submit" value="Save"/>
+
+</form:form>
+
 
 </body>
 </html>
