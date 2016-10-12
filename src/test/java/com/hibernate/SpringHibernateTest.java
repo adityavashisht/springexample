@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -27,9 +28,11 @@ public class SpringHibernateTest {
 
 
     @Test
+    @Rollback(false)
     public void createPersonTest() {
         Person p = new Person();// This is a transient object
         p.setFirst("ADitya");
+        p.setDateOfBirth(LocalDate.now());
 
 
         Address address = new Address();
@@ -67,7 +70,7 @@ public class SpringHibernateTest {
     @Test
     public void testGet() {
 
-        Person p = personHibernateService.getById(1L);
+        Person p = personHibernateService.getById(3L);
         System.out.println(p.getFirst());
         List<Address> addressList = p.getAddressList();
         for (Address address : addressList) {

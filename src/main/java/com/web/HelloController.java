@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by vashishta on 10/5/16.
@@ -23,7 +26,12 @@ public class HelloController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String show(Model model, @RequestParam(name = "id", required = false) Long id) {
+    public String show(Model model,
+                       @RequestParam(name = "id", required = false) Long id,
+                       HttpServletRequest request) {
+
+        WebUtils.setSessionAttribute(request, "DATE_PATTERN", "YYYY-MM-dd");
+
         HelloForm helloForm = new HelloForm();
         helloForm.setPrefix("Mr.");
 

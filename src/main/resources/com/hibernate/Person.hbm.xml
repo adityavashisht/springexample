@@ -3,6 +3,8 @@
         "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
+    <typedef class="java.time.LocalDate" name="local_date"/>
+
     <class name="com.hibernate.Person" table="PERSON">
 
         <id name="id" column="PERSON_ID">
@@ -12,6 +14,7 @@
         </id>
 
         <property name="first" column="FIRST_NAME" type="string"/>
+        <property name="dateOfBirth" column="DOB" type="local_date"/>
 
 
 
