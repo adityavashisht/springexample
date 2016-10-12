@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.time.LocalDate;
+
 /**
  * Created by vashishta on 10/12/16.
  */
@@ -22,7 +24,25 @@ public class HelloValidator implements Validator {
         HelloForm helloForm = (HelloForm) o;
 
         if (helloForm.getPerson().getDateOfBirth() == null) {
-            errors.rejectValue("person.dateOfBirth", "invalid", "Invalid date of birth");
+            errors.rejectValue("person.dateOfBirth", "invalid.date");
+        }
+
+        if (!errors.hasFieldErrors("person.dateOfBirth")) {
+            if (helloForm.getPerson().getDateOfBirth() != null) {
+                LocalDate dateOfBirth = helloForm.getPerson().getDateOfBirth();
+                if (LocalDate.now().isBefore(dateOfBirth)) {
+                    errors.rejectValue("person.dateOfBirth", "invalid", "Cannot be after!");
+                }
+            }
+        }
+
+        if (!errors.hasFieldErrors("person.dateOfBirth")) {
+            if (helloForm.getPerson().getDateOfBirth() != null) {
+                LocalDate dateOfBirth = helloForm.getPerson().getDateOfBirth();
+                if (LocalDate.now().isEqual(dateOfBirth)) {
+                    errors.rejectValue("person.dateOfBirth", "invalid", "Cannot be today!");
+                }
+            }
         }
 
     }

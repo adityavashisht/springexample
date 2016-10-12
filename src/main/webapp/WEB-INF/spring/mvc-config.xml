@@ -18,6 +18,12 @@
         </property>
     </bean>
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames" value="WEB-INF/messages"/>
+        <!-- Value of -1 means cache forever -->
+        <property name="cacheSeconds" value="-1"/>
+    </bean>
+
     <context:component-scan base-package="com.web"/>
 
 
