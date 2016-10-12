@@ -21,7 +21,16 @@
     <form:input path="person.first"/>
     <br/>
 
-    <input value="<fmt:formatDate value="${helloForm.person.dob}" pattern="${sessionScope.DATE_PATTERN}"/>" name="person.dateOfBirth"/>
+    <c:choose>
+        <c:when test="${helloForm.person.dob eq null}">
+            <input value="" name="person.dateOfBirth"/>
+        </c:when>
+        <c:otherwise>
+            <input value="<fmt:formatDate value="${helloForm.person.dob}" pattern="${sessionScope.DATE_PATTERN}"/>" name="person.dateOfBirth"/>
+        </c:otherwise>
+    </c:choose>
+
+    <span style="color:blue;"><form:errors path="person.dateOfBirth"/></span>
 
 
     <input type="submit" value="Save"/>

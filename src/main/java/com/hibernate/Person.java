@@ -16,7 +16,6 @@ public class Person {
     private LocalDate dateOfBirth;
 
 
-
     private List<Address> addressList = new ArrayList<Address>();
     private Set<PhoneNumber> phoneNumberSet = new HashSet<PhoneNumber>();
 
@@ -75,6 +74,12 @@ public class Person {
     }
 
     public static Date asDate(LocalDate localDate) {
-        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date date = null;
+        if (localDate != null) {
+            date = Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        }
+
+        return date;
+
     }
 }
