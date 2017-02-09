@@ -41,8 +41,8 @@
                 <value>com/hibernate/Address.hbm.xml</value>
                 <value>com/hibernate/PhoneNumber.hbm.xml</value>
                 <!-- Mapping -->
-                <value>com/hibernate/mapping/Vehicle.hbm.xml</value>
-                <!--<value>com/hibernate/mapping/AllVehicle.hbm.xml</value>-->
+                <!--<value>com/hibernate/mapping/Vehicle.hbm.xml</value>-->
+                <value>com/hibernate/mapping/AllVehicle.hbm.xml</value>
 
 
             </list>

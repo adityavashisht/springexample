@@ -4,7 +4,7 @@
 <hibernate-mapping package="com.hibernate.mapping">
 
 
-    <class name="Vehicle" table="VEHICLE">
+    <class name="Vehicle" table="VEHICLE" dynamic-update="true">
 
         <cache usage="read-only"/>
 

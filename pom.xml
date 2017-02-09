@@ -81,13 +81,11 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1206-jdbc41</version>
         </dependency>
-
 
 
         <!-- Mybatis dependency -->
@@ -165,7 +163,6 @@
         </dependency>
 
 
-
         <!-- End -->
 
         <!-- Sl4j + log4j 2-->
@@ -207,12 +204,21 @@
         <!-- end log4j2 -->
 
 
-
     </dependencies>
 
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
